@@ -1,20 +1,53 @@
 # CaffeSite - Django Website Project
 
-CaffeSite is an online store website built using the Django framework. This project allows you to set up an e-commerce platform that includes product management, shopping cart, online payment features, and many more.
+CaffeSite is a web application project designed to provide a comprehensive platform for managing and exploring coffee shops, their offerings, and customer interactions. This project is built with modern web development technologies and aims to provide a seamless and user-friendly experience.
 
 ## Features
 
-- Database: Uses a powerful database to store product and user information.
-- Product Management: Easily add, edit, and delete products from the admin panel.
-- Shopping Cart & Online Payment: Users can add products to their shopping cart and complete the purchase through online payment gateways.
-- Responsive Design: The website is designed to look great on all devices, including mobile phones and tablets.
+- Coffee Shop Listings: Browse and discover coffee shops near you.
+- Menu Options: View the full menu of each coffee shop.
+- Customer Reviews: Read and write reviews about your experiences.
+- Ratings: Rate coffee shops based on your experience.
+- Interactive Maps: Find the exact location of each coffee shop.
 
-## Installation and Setup
+## Technologies Used
 
-1. Ensure you have Python 3.x and Django installed on your system.
+- Frontend: HTML, CSS, JavaScript
+- Backend: Django
+- Database: sqlite
+- Other: Google Maps API, Bootstrap for styling
 
-2. Clone the repository:
+## Installation
 
+To run this project locally, follow the steps below:
+
+1. Clone the repository:
    `bash
    git clone https://github.com/ArianGhaderi99/CaffeSite.git
-   cd CaffeSite
+Navigate to the project directory:
+
+bash
+Copy code
+cd CaffeSite
+Install dependencies:
+
+bash
+Copy code
+npm install
+Set up your environment variables (e.g., API keys, database connection).
+
+Run the application:
+
+bash
+Copy code
+npm start
+Visit http://localhost:3000 in your browser to see the app in action.
+
+Contributors
+Arian  (Developer)
+
+Amirhossein (Developer)
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
