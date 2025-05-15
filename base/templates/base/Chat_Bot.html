@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Chat Bot</title>
+    <link rel="shortcut icon" href="{% static 'base/_/img/fav4.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/_/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/_/css/Chat_Bot.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav id="menu" class="nav">
+        <div class="container">
+            <div class="nav-list">
+                <a href="{% url 'base:home' %}" class="nav-item">Home</a>
+                <a href="{% url 'base:about' %}" class="nav-item">About Us</a>
+                <a href="{% url 'base:contact' %}" class="nav-item">Contact</a>
+                <a href="{% url 'base:chatbot' %}" class="nav-item active">Chat Bot</a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'acc:logout' %}" method="post" class="nav-item">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'acc:login' %}" class="nav-item">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Coffee Shop Chat Bot</h1>
+            <p>Ask me anything about our coffee, services, or menu!</p>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                Hello! I'm your virtual coffee assistant. How can I help you today?
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="quick-replies">
+            <button class="quick-reply-btn" onclick="sendQuickReply('Menu')">View Menu</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Hours')">Opening Hours</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Specials')">Today's Specials</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Location')">Find Us</button>
+        </div>
+
+        <div class="chat-input-container">
+            <textarea 
+                class="chat-input" 
+                id="chat-input" 
+                placeholder="Type your message here..."
+                rows="1"
+                onkeydown="if(event.keyCode == 13 && !event.shiftKey) { event.preventDefault(); sendMessage(); }">
+            </textarea>
+            <button class="send-button" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+                Send
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message) {
+                appendMessage('user', message);
+                input.value = '';
+                showTypingIndicator();
+                // Simulate bot response after 1 second
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    appendMessage('bot', getBotResponse(message));
+                }, 1000);
+            }
+        }
+
+        function sendQuickReply(topic) {
+            appendMessage('user', topic);
+            showTypingIndicator();
+            setTimeout(() => {
+                hideTypingIndicator();
+                appendMessage('bot', getBotResponse(topic));
+            }, 1000);
+        }
+
+        function appendMessage(sender, text) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message fade-in`;
+            messageDiv.innerHTML = `
+                ${text}
+                <div class="message-time">${getCurrentTime()}</div>
+            `;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typing-indicator').style.display = 'block';
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typing-indicator').style.display = 'none';
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function getBotResponse(message) {
+            // Simple response logic - can be expanded
+            message = message.toLowerCase();
+            if (message.includes('menu')) {
+                return "Our menu includes a variety of coffee drinks, from classic espresso to specialty lattes. Would you like to see our full menu?";
+            } else if (message.includes('hours')) {
+                return "We're open Monday-Friday 7AM-8PM, Saturday 8AM-6PM, and Sunday 9AM-5PM.";
+            } else if (message.includes('specials')) {
+                return "Today's special is our Caramel Macchiato at 20% off! We also have a breakfast combo deal.";
+            } else if (message.includes('location')) {
+                return "We're located at 123 Coffee Street, Brew City. You can find us on Google Maps!";
+            } else {
+                return "I'm not sure about that. Would you like to know about our menu, hours, specials, or location?";
+            }
+        }
+
+        // Auto-resize textarea
+        const textarea = document.getElementById('chat-input');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
+</body>
+</html>

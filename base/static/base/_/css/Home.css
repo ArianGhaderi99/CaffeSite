@@ -1,0 +1,587 @@
+/* Import base styles */
+@import url('base.css');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0; /* Added padding reset for consistency */
+    box-sizing: border-box; /* Better layout control */
+}
+
+body {
+    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    line-height: 1.6; /* Improved readability */
+}
+
+/* Menu Styles */
+#menu {
+    background-color: var(--background-light);
+    width: 100%;
+    padding: var(--spacing-md);
+    border-bottom: 2px solid var(--primary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#menu a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#menu a:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+/* Specific Menu Item Margins - can be adjusted or removed if space-around is sufficient */
+/*
+#bot, #help {
+    margin-left: 2rem;
+    float: left;
+}
+
+#about {
+    margin-right: 3rem;
+}
+*/
+
+/* Search Section */
+#search-container { /* Added a container for better control */
+    display: flex;
+    align-items: center;
+    margin-top: 1rem; /* Adjusted margin */
+    padding: 0 1rem; /* Added padding */
+    justify-content: flex-end; /* Align to the right */
+}
+
+#search {
+    display: none; /* Keep it hidden initially as per original CSS */
+    border: 2px solid rgb(177, 231, 123); /* Simplified border */
+    border-radius: 0.3rem;
+    background-color: rgb(224, 224, 224);
+    margin-left: 0.5rem; /* Space between button and input */
+}
+
+input[type="search"] {
+    width: 16rem;
+    height: 2.5rem; /* Increased height for better usability */
+    border-radius: 0.1rem;
+    padding-left: 0.5rem;
+    border: 0px;
+    background-color: rgb(224, 224, 224);
+    font-family: 'Trebuchet MS';
+    font-style: italic;
+}
+
+#search-btn {
+    /* width: 7%; */ /* Avoid percentage width for buttons if possible */
+    /* float: right; */ /* Removed float */
+    /* margin-right: 1rem; */ /* Handled by search-container */
+    /* margin-top: 2rem; */ /* Handled by search-container */
+    padding: 0.5rem 1rem; /* Use padding for button size */
+    border-radius: 0.3rem; /* Consistent border-radius */
+    text-align: center;
+    border: 0.1rem solid rgb(119, 119, 119);
+    font-size: small;
+    font-family: cursive;
+    background-color: rgb(186, 221, 150);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+#search-btn:hover {
+    border: 2px solid rgb(115, 115, 255);
+    background-color: rgb(166, 201, 130); /* Example hover background */
+}
+
+/* General Button Styles (if #search-btn is not the only button) */
+button { /* This will apply to #order button as well if it's a <button> element */
+    padding: 0.8rem 1.5rem; /* Use padding for button size */
+    border-radius:0.3rem; /* Consistent border-radius */
+    text-align: center;
+    border: 0.1rem solid rgb(119, 119, 119);
+    font-size: medium; /* Adjusted font size */
+    font-family:cursive;
+    background-color: rgb(186, 221, 150);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+    border: 2px solid rgb(115, 115, 255);
+    background-color: rgb(166, 201, 130);
+}
+
+
+/* Main Content Image/Banner */
+#mcoffee {
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 80px; /* Account for fixed navbar */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#mcoffee::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#to-hidden {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+}
+
+#to-hidden h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#to-hidden p {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#order {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#order:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+}
+
+/* Coffee Order Form */
+#coffee-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: var(--background-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#coffee-form form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+#coffee-form input[type="text"],
+#coffee-form input[type="email"],
+#coffee-form input[type="tel"],
+#coffee-form select,
+#coffee-form textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--text-secondary);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#coffee-form input:focus,
+#coffee-form select:focus,
+#coffee-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#coffee-form label {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.sub {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-md);
+}
+
+.sub:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Text Content Styling */
+.content-section { /* Added a wrapper for h1 and p for better control */
+    padding: 2rem 1rem; /* Add some padding around text content */
+    text-align: center; /* Center text for a modern look, adjust if needed */
+}
+
+h1 {
+    font-family: Cochin, serif; /* Added serif as fallback */
+    font-style: italic;
+    /* width: 25rem; */ /* Removed fixed width */
+    max-width: 90%; /* Use max-width for responsiveness */
+    /* height: 6rem; */ /* Remove fixed height, let content define it */
+    padding: 1rem; /* Adjusted padding */
+    background-color: rgb(136, 136, 136);
+    color: beige;
+    margin: 2rem auto 1rem auto; /* Adjusted margins, auto for horizontal centering */
+    text-transform: capitalize;
+    border-radius: 0.3rem; /* Added border-radius */
+}
+
+p.description { /* Added a class for specificity */
+    font-weight: bold;
+    font-style: italic;
+    /* padding-top: 2rem; */ /* Adjusted padding */
+    /* padding-bottom: 1rem; */
+    padding: 1rem;
+    /* width: 25rem; */ /* Removed fixed width */
+    max-width: 90%; /* Use max-width for responsiveness */
+    /* height: 3rem; */ /* Remove fixed height */
+    /* margin-top: 0rem; */ /* Handled by .content-section or h1 margin */
+    background-color: rgb(126, 126, 126);
+    color: beige;
+    margin: 0 auto 1.5rem auto; /* Adjusted margins */
+    text-transform: capitalize;
+    border-radius: 0.3rem; /* Added border-radius */
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller desktops */
+@media only screen and (max-width: 1000px) {
+    #menu a {
+        margin-left: 0.7rem; /* Original rule, can be adjusted with flex */
+        padding: 0.7rem 0.8rem; /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Slightly smaller font */
+    }
+
+    p.description {
+        font-size: 0.95rem; /* Slightly smaller font */
+    }
+}
+
+/* For smaller tablets and large mobile phones */
+@media only screen and (max-width: 768px) {
+    #menu {
+        flex-direction: column;
+        padding: var(--spacing-sm);
+    }
+
+    #menu a {
+        width: 100%;
+        text-align: center;
+        margin: var(--spacing-xs) 0;
+    }
+
+    #search-container {
+        flex-direction: column;
+        align-items: stretch; /* Make search input and button full width */
+        padding: 0 5%;
+    }
+    #search-btn, input[type="search"] {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    input[type="search"]{
+        margin-left: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p.description {
+        font-size: 1rem;
+    }
+
+    #coffee-form {
+        width: 95%;
+        padding: var(--spacing-lg);
+    }
+}
+
+/* For smaller mobile phones */
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 14px; /* Adjust base font size for small screens */
+    }
+
+    #menu a {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p.description {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+    }
+
+    #order {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #coffee-form {
+        width: 100%; /* Full width on very small screens */
+        margin: 1rem auto;
+        padding: 1rem;
+        border-left: none; /* Remove side borders if they cause issues */
+        border-right: none;
+        border-radius: 0; /* Optional: remove border-radius for full width */
+    }
+
+    #input-form {
+        height: 2.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-section > div {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.order-form {
+    display: none;
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    color: #333;
+}
+
+.order-form.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.features-section {
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem;
+}
+
+.col {
+    flex: 1;
+    padding: 1rem;
+    min-width: 300px;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .order-form {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .col {
+        flex: 100%;
+    }
+}

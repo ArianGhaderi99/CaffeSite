@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Contact Us</title>
+    <link rel="shortcut icon" href="{% static 'base/_/img/fav2.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/_/css/base.css' %}">
+       <link rel="stylesheet" href="{% static 'base/_/css/Contact.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav id="menu" class="nav">
+        <div class="container">
+            <div class="nav-list">
+                <a href="{% url 'base:home' %}" class="nav-item">Home</a>
+                <a href="{% url 'base:about' %}" class="nav-item">About Us</a>
+                <a href="{% url 'base:contact' %}" class="nav-item active">Contact</a>
+                <a href="{% url 'base:chatbot' %}" class="nav-item">Chat Bot</a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'acc:logout' %}" method="post" class="nav-item">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'acc:login' %}" class="nav-item">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-container">
+            <div class="contact-form fade-in-up">
+                <h2>Send us a Message</h2>
+                <form action="" method="post" class="form-container">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">Email Address</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.number.id_for_label }}">Phone Number</label>
+                        {{ form.number }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.message.id_for_label }}">Your Message</label>
+                        {{ form.message }}
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info fade-in-up">
+                <h2>Contact Information</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Address</h3>
+                        <p>123 Coffee Street<br>Brew City, BC 12345<br>United States</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@coffeeshop.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Hours</h3>
+                        <p>Monday - Friday: 7:00 AM - 8:00 PM<br>
+                           Saturday: 8:00 AM - 6:00 PM<br>
+                           Sunday: 9:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <!-- Add your map integration here -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.9!3d40.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM40zMCcwMC4wIk4gNzPCsDU0JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+*{
+    margin: 0rem;
+}
+
+
+body{
+    background-color: (236, 229, 229);
+    animation: animation1;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+#menu{
+    margin: 0 auto 0 auto;
+    background-color: rgb(151, 150, 150);
+    width: 100%;
+    height: 3.7rem;
+    border: 2px solid rgb(97, 97, 97);
+    border-radius: 0.3rem;
+}
+
+div a{
+    float: right;
+    margin-top: 1.1rem;
+    margin-left: 3rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(177, 231, 123);
+    font-family: serif;
+    font-style: italic;
+}
+
+
+#bot,#help{
+    margin-left: 2rem;
+    float: left;
+}
+
+#about{
+    margin-right: 3rem;
+}
+
+
+div a:hover{
+    font-style: normal;
+}
+
+@media only screen and (min-width:0px) and (max-width:1000px){
+    div a{
+        margin-left: 0.7rem;
+    }
+}
+
+@keyframes animation1{
+    from{
+        background-color: rgb(236, 229, 229);
+    }
+    to{
+        background-color:  rgb(213, 165, 252);;
+    }
+}
+
+#topic{
+    padding-bottom: 31rem;
+    border: 3px solid black;
+}
+h1{
+    margin-top: 2rem;
+    color: white;
+    margin-left: 65rem;
+    font-family:'Trebuchet MS';
+}
+
+#search{
+    margin-top: 1.6rem;
+    margin-right: 2rem;
+    float:right;
+    border: 5px solid rgb(177, 231, 123);
+    border-radius: 0.3rem;
+    background-color: rgb(224, 224, 224);
+}
+
+input[type="search"]{
+    width:16rem;
+    height: 2rem;
+    border-radius: 0.1rem;
+    padding-left: 0.5rem;
+    border: 0px;
+    background-color: rgb(224, 224, 224);
+    font-family:'Trebuchet MS';
+    font-style: italic;
+}
+
+button{
+    width: 2.5rem;
+    height: 2.1rem;
+    border-radius:1%;
+    text-align: center;
+    border: 0.1rem solid rgb(119, 119, 119);
+    font-size: small;
+    font-family:cursive;
+    background-color: rgb(186, 221, 150);
+}
+
+
+#btn1{
+    float: right;
+    width: 10%;
+    margin-top: 1.4rem;
+    margin-left: 70rem;
+    margin-right: 2rem;
+}
+
+#btn1:hover{
+    border: 2px solid rgb(125, 125, 255);
+    cursor: pointer;
+}

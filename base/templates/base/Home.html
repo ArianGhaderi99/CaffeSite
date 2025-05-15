@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Home</title>
+    <link rel="shortcut icon" href="{% static 'base/_/img/fav1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/_/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/_/css/Home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <main>
+        <nav id="menu" class="nav">
+            <div class="container">
+                <div class="nav-list">
+                    <a href="{% url 'base:home' %}" class="nav-item active">Home</a>
+                    <a href="{% url 'base:about' %}" class="nav-item">About Us</a>
+                    <a href="{% url 'base:contact' %}" class="nav-item">Contact</a>
+                    <a href="{% url 'base:chatbot' %}" class="nav-item">Chat Bot</a>
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'acc:logout' %}" method="post" class="nav-item">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-secondary">Logout</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'acc:login' %}" class="nav-item">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <section id="mcoffee" class="hero-section" style="background-image: url({% static 'base/_/img/img1.jpg' %});">
+            <div id="to-hidden" class="fade-in">
+                <h1>Start your Day with<br>a fresh coffee</h1>
+                <p>Coffee is a popular and beloved beverage enjoyed by<br>people around the world</p>
+                <button type="button" id="order" class="btn btn-primary" onclick="coffee()">Order Now</button>
+            </div>
+
+            <div id="coffee-form" class="order-form">
+                <form action="" method="Post" class="form-container">
+                    {% csrf_token %}
+                    <h2>Place Your Order</h2>
+                    <div class="form-group">
+                        <label for="{{ form.Addres.id_for_label }}">Delivery Address</label>
+                        {{ form.Addres }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                        {{ form.phone_number }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.coffee_type.id_for_label }}">Coffee Type</label>
+                        {{ form.coffee_type }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.weight.id_for_label }}">Weight (grams)</label>
+                        {{ form.weight }}
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                        <button type="button" class="btn btn-secondary" onclick="coffee()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="feature-card">
+                            <i class="fas fa-coffee"></i>
+                            <h3>Premium Coffee</h3>
+                            <p>Enjoy our selection of premium coffee beans from around the world.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="feature-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Fast Service</h3>
+                            <p>Quick and efficient service to get you your perfect cup of coffee.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="feature-card">
+                            <i class="fas fa-heart"></i>
+                            <h3>Made with Love</h3>
+                            <p>Every cup is crafted with care and attention to detail.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{% static 'base/_/js/Home.js' %}"></script>
+</body>
+</html>

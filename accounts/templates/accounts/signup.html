@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Sign Up</title>
+    <link rel="shortcut icon" href="{% static 'base/_/img/fav1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/_/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/_/css/auth.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Create Account</h1>
+                <p>Join our coffee-loving community</p>
+            </div>
+
+            <div class="auth-form">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="{% if message.tags == 'error' %}error-message{% else %}success-message{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" action="{% url 'acc:signup' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password1">Password</label>
+                        <input type="password" id="password1" name="password1" class="form-control" required>
+                        <div class="password-strength">
+                            <div class="password-strength-bar"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" id="password2" name="password2" class="form-control" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the Terms and Conditions</label>
+                    </div>
+                    <button type="submit" class="auth-button">Create Account</button>
+                </form>
+
+                <div class="auth-links">
+                    <p>Already have an account? <a href="{% url 'acc:login' %}">Sign in</a></p>
+                </div>
+
+                <div class="divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-button">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-button">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password strength indicator
+        const password = document.getElementById('password1');
+        const strengthBar = document.querySelector('.password-strength-bar');
+
+        password.addEventListener('input', function() {
+            const strength = calculatePasswordStrength(this.value);
+            updateStrengthBar(strength);
+        });
+
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/\d/)) strength += 1;
+            if (password.match(/[^a-zA-Z\d]/)) strength += 1;
+            return strength;
+        }
+
+        function updateStrengthBar(strength) {
+            strengthBar.className = 'password-strength-bar';
+            if (strength >= 3) {
+                strengthBar.classList.add('strength-strong');
+            } else if (strength >= 2) {
+                strengthBar.classList.add('strength-medium');
+            } else if (strength >= 1) {
+                strengthBar.classList.add('strength-weak');
+            }
+        }
+
+        // Password match validation
+        const password2 = document.getElementById('password2');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(e) {
+            if (password.value !== password2.value) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+    </script>
+</body>
+</html>

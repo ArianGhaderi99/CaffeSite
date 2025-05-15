@@ -1,0 +1,188 @@
+
+*{
+    margin: 0.078rem;
+}
+
+
+
+body{
+    background-color: rgb(236, 229, 229);
+    animation: animation1;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+#menu{
+    margin: 0 auto 0 auto;
+    background-color: rgb(151, 150, 150);
+    width: 100%;
+    height: 3.7rem;
+    border: 2px solid rgb(97, 97, 97);
+    border-radius: 0.3rem;
+}
+
+div a{
+    float: right;
+    margin-top: 1.1rem;
+    margin-left: 3rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(177, 231, 123);
+    font-family: serif;
+    font-style: italic;
+}
+
+
+#bot,#help{
+    margin-left: 2rem;
+    float: left;
+}
+
+#about{
+    margin-right: 3rem;
+}
+
+
+div a:hover{
+    font-style: normal;
+}
+
+@media only screen and (min-width:0px) and (max-width:1000px){
+    div a{
+        margin-left: 1rem;
+    }
+}
+
+#mcontact{
+    margin-top: 3rem;
+    text-align: center;
+}
+h1{
+    color: rgb(59, 61, 63);
+    font-weight: bold;
+    font-family: monospace;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    font-weight: lighter;
+}
+h2{
+    color: rgb(68, 68, 68);
+    display: inline-block;
+    text-transform: uppercase;
+}
+#middel{
+    margin-top: 2.4rem;
+    margin-right: 19rem;
+    margin-left: 19rem;
+}
+
+p{
+    display: inline-block;
+    font-family:Helvetica;
+    background-color: rgb(205, 223, 223);
+    border-radius: 10%;
+    padding: 2.5rem 0.5rem;
+    text-transform: capitalize;
+}
+#middel2{
+    margin-top: 1rem;
+    margin-right: 16rem;
+    margin-left: 16rem;
+}
+
+#bor{
+    height: 60rem;
+    border: 0.3rem solid rgb(92, 92, 92);
+    padding: 3rem;
+}
+
+#middel3{    
+margin: 0 23rem;
+}
+
+button{
+    width: 7rem;
+    height: 3rem;
+    text-align: center;
+    font-family:cursive;
+    background-color: rgb(177, 231, 123);
+    border: solid 1px black;
+    border-radius: 0.4rem;
+    margin-top: 2rem;
+}
+
+
+@keyframes animation1{
+    from{
+        background-color: rgb(236, 229, 229);
+    }
+    to{
+        background-color:  rgb(213, 165, 252);;
+    }
+}
+
+#bor2{
+    border: 1px solid black;
+    width: 30rem;
+    height: 30rem;
+    text-align: center;
+    margin: 5rem auto 0;
+    border-radius: 2rem;
+}
+
+input{
+    box-sizing: border-box;
+    width: 20rem;
+    height: 3rem;
+    margin-top: 0.8rem;
+    padding-left: 0.4rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.14rem solid rgb(87, 83, 83);
+}
+
+input[type='submit']{
+    border-radius: 2rem;
+    width: 40%;
+    height: 2.3rem;
+    margin-top: 2.3rem;
+    font-size: large;
+    font-family:cursive;
+    background-color: rgb(177, 231, 123);
+    border: solid 1px rgb(177, 231, 123);
+}
+
+input[type='submit']:hover{
+    border: solid 1px rgb(177, 231, 123);
+    cursor: pointer;
+
+}
+
+input[type='tel']:hover, input[type='email']:hover{
+    border: 3px solid;
+    border-color: rgb(177, 231, 123);
+}
+
+#para{
+    text-transform: capitalize;
+    font-size:large;
+    color: beige;
+    font-family:Cambria;
+    background-color: inherit;
+    color: black;
+}
+#para2{
+    margin-top: 0;
+    background-color: inherit;
+    font-size: medium;
+    margin-top: 0;
+    font-weight: 200;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
+
+
+

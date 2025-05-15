@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - About Us</title>
+    <link rel="shortcut icon" href="{% static 'base/_/img/fav3.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/_/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/_/css/About.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav id="menu" class="nav">
+        <div class="container">
+            <div class="nav-list">
+                <a href="{% url 'base:home' %}" class="nav-item">Home</a>
+                <a href="{% url 'base:about' %}" class="nav-item active">About Us</a>
+                <a href="{% url 'base:contact' %}" class="nav-item">Contact</a>
+                <a href="{% url 'base:chatbot' %}" class="nav-item">Chat Bot</a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'acc:logout' %}" method="post" class="nav-item">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'acc:login' %}" class="nav-item">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero fade-up">
+        <div class="container">
+            <h1>About Our Coffee Shop</h1>
+            <p>Discover our story and passion for creating the perfect cup of coffee</p>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="mission-content fade-up">
+            <h2>Our Mission</h2>
+            <p>We are dedicated to serving the finest coffee while creating a warm and welcoming environment for our community. Every cup we serve is crafted with care, using ethically sourced beans and expert brewing techniques.</p>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member fade-up">
+                    <img src="{% static 'base/_/img/team1.jpg' %}" alt="Team Member 1">
+                    <div class="team-member-info">
+                        <h3>John Doe</h3>
+                        <p>Master Barista</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member fade-up">
+                    <img src="{% static 'base/_/img/team2.jpg' %}" alt="Team Member 2">
+                    <div class="team-member-info">
+                        <h3>Jane Smith</h3>
+                        <p>Coffee Roaster</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member fade-up">
+                    <img src="{% static 'base/_/img/team3.jpg' %}" alt="Team Member 3">
+                    <div class="team-member-info">
+                        <h3>Mike Johnson</h3>
+                        <p>Pastry Chef</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card fade-up">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Sustainability</h3>
+                    <p>We are committed to environmentally responsible practices in every aspect of our business.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Community</h3>
+                    <p>Building strong relationships with our local community and coffee farmers worldwide.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <i class="fas fa-star"></i>
+                    <h3>Quality</h3>
+                    <p>Maintaining the highest standards in our coffee selection and preparation.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <i class="fas fa-heart"></i>
+                    <h3>Passion</h3>
+                    <p>Sharing our love for coffee and creating memorable experiences for our customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-content">
+            <h2>Want to Learn More?</h2>
+            <a href="{% url 'base:contact' %}" class="contact-button">Get in Touch</a>
+        </div>
+    </section>
+</body>
+</html>

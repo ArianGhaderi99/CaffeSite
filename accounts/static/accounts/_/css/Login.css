@@ -1,0 +1,145 @@
+body{
+    background-color: rgb(236, 229, 229);
+    animation: animation1;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+
+#mform{
+    margin: 11rem auto 0 auto;
+    width: 27rem;
+    height: 24rem;
+    background-color: rgb(151, 150, 150);
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+#mSignup{
+    display: none;
+}
+
+#mforgetpass{
+    display: none;
+}
+
+input[type='password'], input[type='email']{
+    box-sizing: border-box;
+    width: 70%;
+    margin-top: 0.8rem;
+    padding-left: 0.4rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.14rem solid rgb(87, 83, 83);
+}
+
+h1{
+    padding-top: 2rem;
+    color: rgb(177, 231, 123);
+    font-weight: bold;
+    font-family: serif;
+    font-style: italic;
+}
+
+h1:hover{
+    cursor: default;
+}
+
+a{
+    display: block;
+    margin-top: 0.7rem;
+    text-decoration: none;
+    color: beige;
+    font-family:Geneva;
+}
+
+input[type='submit']{
+    border-radius: 2rem;
+    width: 30%;
+    height: 2.3rem;
+    margin-top: 1.2rem;
+    font-size: large;
+    font-family:cursive;
+    background-color: rgb(177, 231, 123);
+    border: solid 1px rgb(177, 231, 123);
+}
+
+input[type='password']:hover, input[type='email']:hover{
+    border: 3px solid;
+    border-color: rgb(177, 231, 123);
+}
+
+input[type='submit']:hover{
+    border: solid 1px rgb(177, 231, 123);
+    cursor: pointer;
+
+}
+
+p{
+    font-size: small;
+    margin-top: 1.6rem;
+    font-weight: 200;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
+
+p:hover{
+    cursor: default;
+}
+
+#Pinput{
+    box-sizing: border-box;
+    width: 50%;
+    margin-top: 0rem;
+    padding-left: 0.4rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.14rem solid rgb(87, 83, 83);
+}
+
+
+#Pinput:hover{
+    border: 3px solid;
+    border-color: rgb(177, 231, 123);
+}
+
+#Pphone{
+    display: block;
+    margin-top: 1.5rem;
+    text-transform: capitalize;
+    font-size:larger;
+    color: rgb(177, 231, 123);
+    font-family:Cambria;
+}
+
+#Pphone1{
+    display: block;
+    margin-top: 1.5rem;
+    text-transform: capitalize;
+    font-size:larger;
+    color: beige;
+    font-family:Cambria;
+}
+
+#Pbtn{
+    width: 25%;
+    height: 2rem;
+    display: block;
+    text-align: center;
+    margin:1.5rem auto 0 auto;
+    font-family:cursive;
+    background-color: rgb(177, 231, 123);
+    border: solid 1px rgb(177, 231, 123);
+    border-radius: 2rem;
+}
+
+
+@keyframes animation1{
+    from{
+        background-color: rgb(236, 229, 229);
+    }
+    to{
+        background-color:  rgb(213, 165, 252);;
+    }
+}
