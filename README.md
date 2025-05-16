@@ -23,4 +23,3 @@ This project is perfect for anyone interested in web development and UI design. 
 ---
 
 For more information about the project or to help contribute, feel free to reach out!
- khale sooske
